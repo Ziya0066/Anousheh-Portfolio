@@ -1,4 +1,15 @@
 /* --- 1. Global Reset & Variables --- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+
 :root {
     --primary-color: #6c5ce7;      /* Modern Purple */
     --accent-color: #a29bfe;       /* Soft Purple */
@@ -390,6 +401,14 @@ footer {
     text-decoration: none;
     transition: color 0.3s;
 }
+.info-item {
+    max-width: 100%;
+}
+
+.info-item a {
+    word-break: break-all;
+}
+
 
 .info-item a:hover {
     color: var(--primary-color);
@@ -397,11 +416,14 @@ footer {
 
 /* Social Buttons (Mini version of main buttons) */
 .social-links {
-    display: flex;
-    gap: 95px;
-    margin-top: 30px;
-    margin-left: 20px;
+  display: flex;
+  gap: 20px;            /* reduce gap */
+  margin-top: 30px;
+  margin-left: 0;
+  flex-wrap: wrap;      /* allow wrapping */
+  justify-content: center;
 }
+
 
 .social-btn {
     padding: 10px 20px;
@@ -495,3 +517,17 @@ footer {
 .project:nth-child(2) { transition-delay: 200ms; }
 .project:nth-child(3) { transition-delay: 400ms; }
 
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .contact-info,
+  .contact-form {
+    min-width: unset;   /* 🔑 VERY IMPORTANT */
+    width: 100%;
+    padding: 20px;
+  }
+}
