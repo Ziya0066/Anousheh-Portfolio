@@ -1,0 +1,497 @@
+/* --- 1. Global Reset & Variables --- */
+:root {
+    --primary-color: #6c5ce7;      /* Modern Purple */
+    --accent-color: #a29bfe;       /* Soft Purple */
+    --bg-dark: #0f172a;            /* Deep Navy Background */
+    --bg-card: #1e293b;            /* Slightly lighter for cards */
+    --text-main: #f8fafc;          /* White-ish text */
+    --text-muted: #94a3b8;         /* Gray text */
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling when clicking nav links */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- 2. Header & Profile --- */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px 40px;
+    text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+}
+
+.profile-pic img {
+    width: 225px;
+    height: 225px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(108, 92, 231, 0.4); /* Glowing effect */
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.profile-pic img:hover {
+    transform: scale(1.05);
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.fswd { /* Full Stack Web Developer text */
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* --- 3. Buttons (Applied to Resume & Projects) --- */
+.buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* Pill shape */
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(118, 75, 162, 0.6);
+}
+
+#down { /* Specific style for Resume button if you want it larger */
+    padding: 14px 40px;
+    font-size: 1.1rem;
+}
+
+/* --- 4. Navigation --- */
+nav {
+    background: rgba(30, 41, 59, 0.95); /* Semi-transparent */
+    backdrop-filter: blur(10px);        /* Glass effect */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 20px;
+}
+
+nav ul li {
+    margin: 0 25px;
+}
+
+nav ul li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Underline animation for nav links */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- 5. Sections General Styling --- */
+section {
+    padding: 80px 10%; /* 10% side padding makes it look neat */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text-main);
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Decorative line under headings */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* --- 6. About Section --- */
+#about {
+    text-align: center;
+}
+
+#about p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* --- 7. Projects Grid --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+    gap: 30px;
+}
+
+.project {
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes button to bottom */
+}
+
+.project:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.project h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.project p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+/* --- 8. Contact Section --- */
+#contact {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+#contact p {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.hl { /* Hyperlinks in contact */
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.hl:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* --- 9. Footer --- */
+footer {
+    background-color: #020617; /* Darker than body */
+    text-align: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* --- 10. Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    section {
+        padding: 60px 20px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+    }
+    
+    nav ul li {
+        margin: 5px 10px;
+    }
+}
+
+/* --- Skills Section --- */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-category h3 {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.skill-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-card {
+    background: rgba(30, 41, 59, 0.6); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 25px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 160px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+/* Icon size */
+.skill-card i {
+    font-size: 2rem; 
+    /* The 'colored' class from Devicon handles the colors automatically */
+}
+
+/* Text styling */
+.skill-card span {
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+/* Hover Effect: Glow and Lift */
+.skill-card:hover {
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.9);
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.2); /* Purple glow */
+}
+
+/* --- Mobile Fix --- */
+@media (max-width: 768px) {
+    .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+    
+    .skill-card {
+        min-width: auto;
+        justify-content: center;
+        flex-direction: column; /* Stack icon on top of text for mobile */
+        text-align: center;
+    }
+}
+
+/* --- Contact Section Layout --- */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Wraps on mobile */
+}
+
+/* Left Side: Info */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    border: 2px solid var(--text-muted);
+    border-radius: 20px;
+    padding: 30px;
+    
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.contact-info p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.info-item a {
+    color: var(--text-main);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.info-item a:hover {
+    color: var(--primary-color);
+}
+
+/* Social Buttons (Mini version of main buttons) */
+.social-links {
+    display: flex;
+    gap: 95px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.social-btn {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.social-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Right Side: Form */
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+   
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Styling the Inputs */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(15, 23, 42, 0.6); /* Darker inside input */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Focus Effect (Purple Glow) */
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
+}
+
+/* Submit Button Override */
+.submit-btn {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+#my-form-status {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+#my-form-status.success {
+    color: #2ecc71; /* Bright Green */
+    background: rgba(46, 204, 113, 0.1);
+    padding: 10px;
+}
+
+/* --- Scroll Animation Classes --- */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(50px); /* Pushes element down */
+    transition: all 1s ease-out; /* Smooth transition */
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0); /* Returns to original position */
+}
+
+/* Optional: Stagger the delay for child elements (like project cards) 
+   so they don't all pop up at the exact same time */
+.project:nth-child(2) { transition-delay: 200ms; }
+.project:nth-child(3) { transition-delay: 400ms; }
+
